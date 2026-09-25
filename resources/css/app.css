@@ -1,9 +1,591 @@
-@import 'tailwindcss';
+/* =========================================
+   COOKIESNDCREAM PERSONAL TASK MANAGER
+   PURPLE THEME
+========================================= */
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+/* =========================================
+   GENERAL
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f6f1ff;
+    color: #333;
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar {
+    background: #6a1b9a;
+    color: white;
+    padding: 18px 8%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.nav-link {
+    background: white;
+    color: #6a1b9a;
+
+    text-decoration: none;
+
+    padding: 10px 18px;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+.nav-link:hover {
+    background: #ede7f6;
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
+.container {
+    width: 85%;
+    max-width: 1100px;
+
+    margin: 40px auto;
+}
+
+
+/* =========================================
+   PAGE HEADER
+========================================= */
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.top h1 {
+    color: #4a148c;
+    font-size: 32px;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.add-button {
+    display: inline-block;
+
+    background: #7b1fa2;
+    color: white;
+
+    text-decoration: none;
+
+    padding: 12px 20px;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+.add-button:hover {
+    background: #4a148c;
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   SUCCESS MESSAGE
+========================================= */
+
+.success {
+    background: #ede7f6;
+    color: #4a148c;
+
+    border-left: 5px solid #7b1fa2;
+
+    padding: 14px 16px;
+
+    border-radius: 8px;
+
+    margin-bottom: 20px;
+
+    font-weight: bold;
+}
+
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.empty {
+    background: white;
+
+    text-align: center;
+
+    padding: 60px 20px;
+
+    border-radius: 14px;
+
+    box-shadow: 0 4px 15px rgba(74, 20, 140, 0.08);
+}
+
+.empty h2 {
+    color: #6a1b9a;
+
+    margin-bottom: 10px;
+
+    font-size: 25px;
+}
+
+.empty p {
+    color: #777;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   TASK GRID
+========================================= */
+
+.tasks {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(280px, 1fr));
+
+    gap: 20px;
+}
+
+
+/* =========================================
+   TASK CARD
+========================================= */
+
+.task-card {
+    background: white;
+
+    padding: 23px;
+
+    border-radius: 14px;
+
+    border-top: 5px solid #7b1fa2;
+
+    box-shadow: 0 4px 15px rgba(74, 20, 140, 0.08);
+
+    transition: 0.2s;
+}
+
+.task-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 7px 20px rgba(74, 20, 140, 0.13);
+}
+
+.task-card h2 {
+    color: #4a148c;
+
+    margin-bottom: 12px;
+
+    font-size: 21px;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.description {
+    color: #666;
+
+    line-height: 1.6;
+
+    margin-bottom: 17px;
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+.status {
+    display: inline-block;
+
+    padding: 6px 13px;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    margin-bottom: 15px;
+}
+
+.pending {
+    background: #fff3cd;
+
+    color: #856404;
+}
+
+.completed {
+    background: #e8dff5;
+
+    color: #6a1b9a;
+}
+
+
+/* =========================================
+   DUE DATE
+========================================= */
+
+.date {
+    color: #555;
+
+    margin-bottom: 18px;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   ACTION BUTTONS
+========================================= */
+
+.actions {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+.actions a,
+.actions button {
+    border: none;
+
+    text-decoration: none;
+
+    padding: 8px 13px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+.actions form {
+    display: inline;
+}
+
+
+/* EDIT */
+
+.edit {
+    background: #ede7f6;
+
+    color: #6a1b9a;
+}
+
+.edit:hover {
+    background: #d9ccec;
+}
+
+
+/* COMPLETE */
+
+.complete {
+    background: #e8dff5;
+
+    color: #6a1b9a;
+}
+
+.complete:hover {
+    background: #d8c5eb;
+}
+
+
+/* SET PENDING */
+
+.set-pending {
+    background: #fff3cd;
+
+    color: #856404;
+}
+
+.set-pending:hover {
+    background: #ffe69c;
+}
+
+
+/* DELETE */
+
+.delete {
+    background: #ffebee;
+
+    color: #c62828;
+}
+
+.delete:hover {
+    background: #ffcdd2;
+}
+
+
+/* =========================================
+   FORM CARD
+========================================= */
+
+.form-card {
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 14px;
+
+    box-shadow: 0 4px 15px rgba(74, 20, 140, 0.08);
+
+    border-top: 5px solid #7b1fa2;
+}
+
+.form-card h1 {
+    color: #4a148c;
+
+    margin-bottom: 28px;
+
+    font-size: 30px;
+}
+
+
+/* =========================================
+   FORM GROUP
+========================================= */
+
+.form-group {
+    margin-bottom: 21px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #4a148c;
+
+    font-weight: bold;
+}
+
+
+/* =========================================
+   INPUTS
+========================================= */
+
+input,
+textarea,
+select {
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border: 1px solid #d2c7df;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    background: white;
+
+    color: #333;
+
+    transition: 0.2s;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+
+    border-color: #7b1fa2;
+
+    box-shadow:
+        0 0 0 3px rgba(123, 31, 162, 0.10);
+}
+
+textarea {
+    min-height: 130px;
+
+    resize: vertical;
+}
+
+
+/* =========================================
+   VALIDATION ERROR
+========================================= */
+
+.error {
+    background: #ffebee;
+
+    color: #c62828;
+
+    padding: 14px;
+
+    border-radius: 8px;
+
+    margin-bottom: 20px;
+
+    border-left: 5px solid #c62828;
+}
+
+.error ul {
+    margin-left: 20px;
+}
+
+.error li {
+    margin-bottom: 5px;
+}
+
+
+/* =========================================
+   FORM BUTTONS
+========================================= */
+
+.buttons {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 28px;
+}
+
+.save-button,
+.update-button {
+    background: #7b1fa2;
+
+    color: white;
+
+    border: none;
+
+    padding: 12px 23px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+.save-button:hover,
+.update-button:hover {
+    background: #4a148c;
+}
+
+.cancel-button {
+    background: #eeeeee;
+
+    color: #444;
+
+    text-decoration: none;
+
+    padding: 12px 23px;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+.cancel-button:hover {
+    background: #dddddd;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .navbar {
+        padding: 18px 5%;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .container {
+        width: 92%;
+    }
+
+    .top {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .top h1 {
+        font-size: 27px;
+    }
+
+    .add-button {
+        width: 100%;
+
+        text-align: center;
+    }
+
+    .form-card {
+        padding: 25px 20px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .save-button,
+    .update-button,
+    .cancel-button {
+        width: 100%;
+
+        text-align: center;
+    }
+
 }

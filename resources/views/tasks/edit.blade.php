@@ -1,73 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Edit Task - cookiesndcream</title>
+    <title>Edit Task - Personal Task Manager</title>
 
     <style>
-
         * {
             box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
         }
 
         body {
-            margin: 0;
-            background: #f7f1ff;
-            color: #2d1b3d;
+            background: #f5f0ff;
+            color: #333;
         }
 
         .navbar {
-            background: linear-gradient(
-                135deg,
-                #6a1b9a,
-                #8e44ad
-            );
-
+            background: #6a1b9a;
             color: white;
-
-            padding: 20px 8%;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .logo {
-            font-size: 25px;
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .nav-link {
+            color: #6a1b9a;
+            background: white;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 8px;
             font-weight: bold;
         }
 
         .container {
-            width: 90%;
-            max-width: 650px;
-
-            margin: 45px auto;
+            width: 85%;
+            max-width: 700px;
+            margin: 40px auto;
         }
 
-        .card {
+        .form-card {
             background: white;
-
-            padding: 35px;
-
-            border-radius: 15px;
-
-            box-shadow:
-                0 5px 20px rgba(80, 40, 100, 0.12);
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
         }
 
-        h2 {
+        h1 {
             color: #4a148c;
-
-            margin-bottom: 8px;
-        }
-
-        .subtitle {
-            color: #777;
-
-            margin-bottom: 28px;
+            margin-bottom: 25px;
         }
 
         .form-group {
@@ -76,11 +66,7 @@
 
         label {
             display: block;
-
             margin-bottom: 8px;
-
-            color: #4a148c;
-
             font-weight: bold;
         }
 
@@ -88,127 +74,124 @@
         textarea,
         select {
             width: 100%;
-
             padding: 12px;
-
-            border: 1px solid #d5c5df;
-
+            border: 1px solid #ccc;
             border-radius: 8px;
-
-            font-size: 14px;
-
-            outline: none;
+            font-size: 15px;
         }
 
         input:focus,
         textarea:focus,
         select:focus {
-            border-color: #8e44ad;
-
-            box-shadow:
-                0 0 0 2px #eadcff;
+            outline: none;
+            border-color: #7b1fa2;
         }
 
         textarea {
             min-height: 120px;
-
             resize: vertical;
         }
 
         .error {
-            color: #a22a5a;
+            background: #ffebee;
+            color: #c62828;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
 
-            font-size: 13px;
-
-            margin-top: 6px;
+        .error ul {
+            margin-left: 20px;
         }
 
         .buttons {
             display: flex;
-
             gap: 10px;
-
-            margin-top: 28px;
+            margin-top: 25px;
         }
 
-        .button {
-            padding: 12px 20px;
-
+        .update-button {
+            background: #7b1fa2;
+            color: white;
             border: none;
-
+            padding: 12px 22px;
             border-radius: 8px;
-
             cursor: pointer;
-
-            text-decoration: none;
-
             font-weight: bold;
         }
 
-        .update {
-            background: #7b1fa2;
-
-            color: white;
-        }
-
-        .update:hover {
+        .update-button:hover {
             background: #4a148c;
         }
 
-        .cancel {
-            background: #eee7f2;
+        .cancel-button {
+            background: #eeeeee;
+            color: #444;
+            text-decoration: none;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
 
-            color: #4a148c;
+        .cancel-button:hover {
+            background: #dddddd;
         }
 
         @media (max-width: 600px) {
+            .container {
+                width: 92%;
+            }
+
+            .navbar {
+                padding: 18px 5%;
+            }
 
             .buttons {
                 flex-direction: column;
             }
-
-            .button {
-                text-align: center;
-            }
-
         }
-
     </style>
-
 </head>
-
 
 <body>
 
-
+    <!-- NAVBAR -->
     <nav class="navbar">
 
         <div class="logo">
             🍪 cookiesndcream
         </div>
 
+        <a href="{{ route('tasks.index') }}" class="nav-link">
+            My Tasks
+        </a>
+
     </nav>
 
 
-    <main class="container">
+    <!-- FORM -->
+    <div class="container">
+
+        <div class="form-card">
+
+            <h1>Edit Task</h1>
 
 
-        <div class="card">
-
-
-            <h2>
-                Edit Task
-            </h2>
-
-            <p class="subtitle">
-                Update your task information.
-            </p>
-
-
+            <!-- VALIDATION ERRORS -->
             @if($errors->any())
 
                 <div class="error">
-                    Please check the information entered.
+
+                    <ul>
+
+                        @foreach($errors->all() as $error)
+
+                            <li>{{ $error }}</li>
+
+                        @endforeach
+
+                    </ul>
+
                 </div>
 
             @endif
@@ -220,12 +203,10 @@
             >
 
                 @csrf
-
                 @method('PUT')
 
 
                 <!-- TASK NAME -->
-
                 <div class="form-group">
 
                     <label for="task_name">
@@ -237,22 +218,14 @@
                         id="task_name"
                         name="task_name"
                         value="{{ old('task_name', $task->task_name) }}"
+                        placeholder="Enter task name"
                         required
                     >
-
-                    @error('task_name')
-
-                        <div class="error">
-                            {{ $message }}
-                        </div>
-
-                    @enderror
 
                 </div>
 
 
                 <!-- DESCRIPTION -->
-
                 <div class="form-group">
 
                     <label for="description">
@@ -262,13 +235,13 @@
                     <textarea
                         id="description"
                         name="description"
+                        placeholder="Enter task details..."
                     >{{ old('description', $task->description) }}</textarea>
 
                 </div>
 
 
                 <!-- STATUS -->
-
                 <div class="form-group">
 
                     <label for="status">
@@ -283,14 +256,14 @@
 
                         <option
                             value="Pending"
-                            {{ old('status', $task->status) === 'Pending' ? 'selected' : '' }}
+                            {{ old('status', $task->status) == 'Pending' ? 'selected' : '' }}
                         >
                             Pending
                         </option>
 
                         <option
                             value="Completed"
-                            {{ old('status', $task->status) === 'Completed' ? 'selected' : '' }}
+                            {{ old('status', $task->status) == 'Completed' ? 'selected' : '' }}
                         >
                             Completed
                         </option>
@@ -301,7 +274,6 @@
 
 
                 <!-- DUE DATE -->
-
                 <div class="form-group">
 
                     <label for="due_date">
@@ -312,42 +284,36 @@
                         type="date"
                         id="due_date"
                         name="due_date"
-                        value="{{ old('due_date', $task->due_date?->format('Y-m-d')) }}"
+                        value="{{ old('due_date', $task->due_date ? $task->due_date->format('Y-m-d') : '') }}"
                     >
 
                 </div>
 
 
                 <!-- BUTTONS -->
-
                 <div class="buttons">
 
                     <button
                         type="submit"
-                        class="button update"
+                        class="update-button"
                     >
                         Update Task
                     </button>
 
                     <a
                         href="{{ route('tasks.index') }}"
-                        class="button cancel"
+                        class="cancel-button"
                     >
                         Cancel
                     </a>
 
                 </div>
 
-
             </form>
-
 
         </div>
 
-
-    </main>
-
+    </div>
 
 </body>
-
 </html>
