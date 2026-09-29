@@ -1,4 +1,4 @@
-# Personal Task Manager
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/4bf5f66d-d7f6-43a5-b47c-a68a84789c69" /># Personal Task Manager
 
 A simple Laravel-based application that helps users organize and manage their daily tasks. Users can create tasks, view saved tasks, edit task details, delete tasks, and update their task status.
 
@@ -92,14 +92,9 @@ npm install
 
 ## Screenshots
 
-### Task List
-![Task List](screenshot%201.png)
-
-### Add New Task
-![Add New Task](screenshot%202.png)
-
-### Task Manager
-![Task Manager](screenshot%203.png)
+![Task List](./screenshot%201.png)
+![Add New Task](./screenshot%202.png)
+![Task Manager](./screenshot%203.png)
 
 
 
