@@ -90,6 +90,17 @@ Users can delete a task from the system.
 composer install
 npm install
 
+## Screenshots
+
+### Task List
+![Task List](screenshot%201.png)
+
+### Add New Task
+![Add New Task](screenshot%202.png)
+
+### Task Manager
+![Task Manager](screenshot%203.png)
+
 
 
 
