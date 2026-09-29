@@ -90,5 +90,28 @@ Users can delete a task from the system.
 composer install
 npm install
 
+image 1: Add Task
+<img width="1599" height="792" alt="image" src="https://github.com/user-attachments/assets/95228caa-67c5-4145-9c1a-14e631f1bc9a" />
+
+image 2: Edit a Task
+<img width="1599" height="790" alt="image" src="https://github.com/user-attachments/assets/015fb49d-0354-4844-9729-9d2e2f8fcf1a" />
+
+image 3: Task Added
+<img width="1599" height="790" alt="image" src="https://github.com/user-attachments/assets/d5bdd9e6-2f96-461f-994c-c6ec1228d40e" />
+
+image 4: Completed task
+<img width="1599" height="789" alt="image" src="https://github.com/user-attachments/assets/a57c7d4b-c8ce-465b-996e-0f73f58bd869" />
+
+
+
+
+
+
+
+
+
+
+
+
 
 
