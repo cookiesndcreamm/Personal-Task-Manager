@@ -86,9 +86,6 @@ Users can delete a task from the system.
 
 3. Install Laravel dependencies:
 
-```bash
-composer install
-npm install
 
 ## Screenshots
 
