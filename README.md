@@ -1,4 +1,4 @@
-Personal Task Manager
+## Personal Task Manager
 
 A simple Laravel-based application that helps users organize and manage their daily tasks. Users can create tasks, view saved tasks, edit task details, delete tasks, and update their task status.
 
