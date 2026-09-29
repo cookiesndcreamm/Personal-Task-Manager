@@ -90,6 +90,41 @@ Users can delete a task from the system.
 composer install
 npm install
 
+## Image 1: Review and Manage Tasks
+The dashboard displays all saved tasks. Each task shows its name, description, status, due date, and available actions.
+
+1. View the saved tasks in the task list.
+2. Check the task name and description.
+3. Check the current task status.
+4. Check the due date of the task.
+5. Select **Complete** to change a pending task to completed.
+6. Select **Edit** to modify the task.
+7. Select **Delete** to remove the task.
+<img width="1599" height="790" alt="screenshot 1" src="https://github.com/user-attachments/assets/d078dab4-d75c-4a7c-94e1-60c0d75d315d" />
+
+## Image 2: Add a Task
+The Add New Task page allows the user to create a new task.
+
+1. Enter the task name in the **Task Name** field.
+2. Enter additional details in the **Description** field.
+3. Select the task **Status**.
+4. Choose the **Due Date**.
+5. Select **Save Task** to save the new task.
+6. Select **Cancel** to return to the task list without saving.
+<img width="1599" height="790" alt="screenshot 2" src="https://github.com/user-attachments/assets/af3df29d-833b-4bcc-a12b-63e9e25370bf" />
+
+## Image 3: Task List After Saving
+After successfully saving a task, the system returns to the dashboard and displays the new task.
+
+1. The saved task appears in the task list.
+2. The task name and description are displayed.
+3. The task status is displayed as Pending or Completed.
+4. The due date is displayed.
+5. The user can complete, edit, or delete the task.
+<img width="1599" height="793" alt="screenshot 3" src="https://github.com/user-attachments/assets/2258e6c0-c692-429d-9758-94db3cb92a0c" />
+
+
+
 
 
 
